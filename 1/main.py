@@ -13,9 +13,7 @@ with open("input.txt") as f:
             all_elves.append(current_elf)
             current_elf=[]
 
-print(all_elves)
-
-dummy_elves = [[1,2,3],[4,5,6],[7,8],[1000], [900,10000, -29]]
+dummy_elves = [[1000, 2000, 3000], [4000], [5000, 6000], [7000,8000,9000], [10000]]
 
 
 def calc_total(snacks):
@@ -37,5 +35,20 @@ def find_fattest_elf(elves):
     
     return solution 
 
-ans = find_fattest_elf(all_elves)
-print(ans)
+def find_3_fattest(elves):
+    top3 = [1,1,1]
+    for elf in elves:
+        calories = calc_total(elf)
+        if calories > min(top3):
+            print(f"FAT ELF! {calories}")
+            top3= sorted(top3)
+            top3[0] = calories
+            print(top3)
+    print(f"total cals for pt.2: {sum(top3)}")
+
+
+print(find_fattest_elf(all_elves))
+
+find_3_fattest(all_elves)
+
+
